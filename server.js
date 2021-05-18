@@ -26,7 +26,12 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  res.json({greeting: 'hello journeyer'});
+  console.log(req.headers)
+  software =req.headers['user-agent']
+  language = req.headers['accept-language']
+  ipaddress= req.headers['x-forwarded-for'] || req.connection.remoteAddress
+  
+  res.json({software: software ,language :language , ipaddress:ipaddress});
 });
 
 
